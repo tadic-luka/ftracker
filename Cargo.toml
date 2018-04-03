@@ -1,0 +1,22 @@
+[package]
+name = "ftracker"
+version = "0.1.0"
+authors = ["Luka Tadić <luka.tadic@fer.hr>"]
+description = "File watcher"
+
+[dependencies]
+users = "0.5.0"
+serde = "1.0"
+serde_derive = "1.0"
+docopt = "0.6"
+rustc-serialize = "0.3.24"
+notify = "4.0.0"
+log = "0.4.0-rc.1"
+glob="0.2.11"
+toml = "0.4"
+
+[dependencies.log4rs]
+version = "0.8.0"
+default-features = true
+features = ["rolling_file_appender"]
+
