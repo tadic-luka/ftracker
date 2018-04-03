@@ -22,7 +22,7 @@ group = 'group' # not required
 working_dir = '/path/to/cwd/' # not required
 env = [
 	['MY_ENV', 'value']
-] # not required
+] # in form of ['key', 'value'], not required
 
 # another rule which will exectue commands as user who executed this program
 [[rules]]
