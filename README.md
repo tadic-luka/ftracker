@@ -59,8 +59,6 @@ Ftracker is licensed under
  * MIT license ([LICENSE-MIT](LICENSE-MIT) or
    http://opensource.org/licenses/MIT)
 
-at your option.
-
 ## Features
    * [x] specify user for command
    * [x] specify group for command
