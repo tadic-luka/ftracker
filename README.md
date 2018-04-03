@@ -61,8 +61,8 @@ Ftracker is licensed under
 at your option.
 
 ## Features
- *[x] specify user for command
- *[x] specify group for command
- *[x] support logging
- *[] support live reload of config file
- *[] specify working dir for command
+   * [x] specify user for command
+   * [x] specify group for command
+   * [x] support logging
+   * [ ] support live reload of config file
+   * [ ] specify working dir for command
