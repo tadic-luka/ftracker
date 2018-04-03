@@ -52,7 +52,7 @@ Adding environment variables for command.
 Learn Rust and create somewhat useful program.
 
 ## Installing
-Easiest way to install this program is with [cargo](https://doc.rust-lang.org/cargo/getting-started/first-steps.html).
+Easiest way to install this program is with [cargo](https://doc.rust-lang.org/cargo/).
 ```bash
 # debug version
 cargo build 
