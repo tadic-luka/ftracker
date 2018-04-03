@@ -34,6 +34,7 @@ watch_patterns = ['**/filename']
 command = '/path/to/command'
 ```
 This will create two rules, one will execute commands as specidied user, group and working dir, other will execute commands as user and group who executed watcher and in current working dir.
+Filename matching uses glob patterns.
 
 ## Motivation
 Learn Rust and create somewhat useful program.
