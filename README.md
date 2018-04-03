@@ -49,7 +49,8 @@ cargo build --release
 # to execute
 cargo run # --release
 # or you can execute binary file directly
-./target/debug_or_release/fwatcher
+./target/debug/ftracker # debug version
+./target/release/ftracker # debug version
 ```
 
 ## License
