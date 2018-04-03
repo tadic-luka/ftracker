@@ -1,0 +1,9 @@
+[[rules]]
+name = 'desetak'
+dir = './'
+watch_patterns = ['**/README.md']
+[rules.command]
+command = 'bash -c "echo -n $XDG_RUNTIME_DIR"'
+env = [
+	['XDG_RUNTIME_DIR', '20'],
+]
