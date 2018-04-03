@@ -1,8 +1,7 @@
 # File watcher
 
 Lightweight file watcher.
-Configure execution of multiple rules specified in toml file.
-Supports executing arbitrary amount of different rules with different users.
+Listens for file changes specified in config file and then executing commands also specified in config file.
 It is intended to run as root if users are specified for executing commands.
 
 
