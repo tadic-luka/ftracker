@@ -33,9 +33,21 @@ watch_patterns = ['**/filename']
 command = '/path/to/command'
 ```
 This will create two rules, one will execute commands as specidied user, group and working dir, other will execute commands as user and group who executed watcher and in current working dir.
+### Features
+Ftracker watches on file create, file write and changing file mode bits.
 Filename matching uses glob patterns.
-### Logging
+
+
+#### Logging
 Ftracker uses [log4rs](https://github.com/sfackler/log4rs) as logging framework.
+
+#### Users and groups
+Ftracker can execute command for given rule as user and/or group specified in config file.
+
+#### Environment vars
+Adding environment variables for command.
+
+
 ## Motivation
 Learn Rust and create somewhat useful program.
 
@@ -60,7 +72,7 @@ Ftracker is licensed under
  * MIT license ([LICENSE-MIT](LICENSE-MIT) or
    http://opensource.org/licenses/MIT)
 
-## Features
+## ROADMAP
    * [x] specify user for command
    * [x] specify group for command
    * [x] support logging
