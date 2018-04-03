@@ -14,31 +14,45 @@ mod watcher;
 mod thread_pool;
 
 use watcher::FileWatcher;
-
 use docopt::Docopt;
+use log::LevelFilter;
+use log4rs::append::console::ConsoleAppender;
+use log4rs::config::{Appender, Config, Root};
+use log4rs::encode::pattern::PatternEncoder;
 
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 const USAGE: &'static str = "
 File Watcher
 
 Usage:
-    fwatcher [-c PATH] [options]
+    fwatcher [-c PATH] [-l PATH] [options]
 
 Options:
     -h --help       Shows this message.
     -v --version    Shows version.
-    -l --log        Use logging.
+    -l PATH         Set logging conf for log4rs (default is stdout).
     -c PATH         Set path to config file.
 ";
-
 #[derive(Debug, RustcDecodable)]
 pub struct Args {
     pub flag_c: Option<String>,
     pub flag_h: bool,
     pub flag_v: bool,
-    pub flag_l: bool,
+    pub flag_l: Option<String>,
 }
 
+fn create_console_logger() {
+    let stdout = ConsoleAppender::builder()
+        .encoder(Box::new(PatternEncoder::new("{l} - {m}{n}")))
+        .build();
+
+    let config = Config::builder()
+        .appender(Appender::builder().build("stdout", Box::new(stdout)))
+        .build(Root::builder().appender("stdout").build(LevelFilter::Info)).unwrap();
+
+    log4rs::init_config(config).unwrap();
+
+}
 fn main() {
     let args: Args = Docopt::new(USAGE)
         .and_then(|dopt| dopt.decode())
@@ -50,14 +64,15 @@ fn main() {
         Args { flag_v: true, .. } => show(VERSION),
         Args { flag_h: true, .. } => show(USAGE),
 
-        Args { flag_l: true, flag_c: p, .. } => {
+        Args { flag_l: logfile, flag_c: p, .. } => {
             path = p.unwrap_or(path);
-            log4rs::init_file("log4rs.yaml", log4rs::file::Deserializers::new()).unwrap();
-        },
-        Args { flag_c: Some(p), .. } => {
-            path = p;
-        },
-        _ => {}
+            if let Some(logfile) = logfile {
+                log4rs::init_file(logfile, log4rs::file::Deserializers::new()).unwrap();
+            } else {
+                create_console_logger();
+            }
+
+        }
 
     }
     info!("booting up");
